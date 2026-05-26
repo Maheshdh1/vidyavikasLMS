@@ -1,1 +1,1 @@
-export default function Page(){return <main style={{padding:40}}><h1>Contact</h1><p>Email: support@vidyavikasacademy.in</p></main>}
+export default function Page(){return <main style={{padding:40}}><h1>Contact</h1><p>Email: support@vidyavikasacademy.online</p></main>}
