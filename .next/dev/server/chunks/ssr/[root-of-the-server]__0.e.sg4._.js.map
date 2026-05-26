@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/mahesh.dhulipalla/Desktop/Mahesh/vidyavikasLMS/app/courses/page.js"],"sourcesContent":["export default function Courses(){return <main style={{padding:40}}><h1>Courses</h1><ul><li>ReactJS Course – ₹999</li><li>Node.js Course – ₹1499</li></ul></main>}"],"names":["Courses","style","padding"],"mappings":";;;;;;AAAe,SAASA;IAAU,qBAAO,oRAAC;QAAKC,OAAO;YAACC,SAAQ;QAAE;;0BAAG,oRAAC;0BAAG;;;;;;0BAAY,oRAAC;;kCAAG,oRAAC;kCAAG;;;;;;kCAA0B,oRAAC;kCAAG;;;;;;;;;;;;;;;;;;AAAuC"}}]
+}

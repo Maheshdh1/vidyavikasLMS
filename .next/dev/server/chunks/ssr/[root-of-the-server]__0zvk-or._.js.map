@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/mahesh.dhulipalla/Desktop/Mahesh/vidyavikasLMS/app/page.js"],"sourcesContent":["export default function Home(){\nreturn <main style={{padding:40}}>\n<h1>Vidya Vikas Academy</h1>\n<p>Professional online learning platform for practical software development skills.</p>\n<h2>Courses</h2>\n<ul><li>ReactJS Mastery</li><li>Node.js Backend</li><li>Full Stack Projects</li></ul>\n<p><a href='/courses'>View Courses</a> | <a href='/payment-test'>Test Payment</a></p>\n</main>\n}"],"names":["Home","style","padding","href"],"mappings":";;;;;;AAAe,SAASA;IACxB,qBAAO,oRAAC;QAAKC,OAAO;YAACC,SAAQ;QAAE;;0BAC/B,oRAAC;0BAAG;;;;;;0BACJ,oRAAC;0BAAE;;;;;;0BACH,oRAAC;0BAAG;;;;;;0BACJ,oRAAC;;kCAAG,oRAAC;kCAAG;;;;;;kCAAoB,oRAAC;kCAAG;;;;;;kCAAoB,oRAAC;kCAAG;;;;;;;;;;;;0BACxD,oRAAC;;kCAAE,oRAAC;wBAAEC,MAAK;kCAAW;;;;;;oBAAgB;kCAAG,oRAAC;wBAAEA,MAAK;kCAAgB;;;;;;;;;;;;;;;;;;AAEjE"}}]
+}

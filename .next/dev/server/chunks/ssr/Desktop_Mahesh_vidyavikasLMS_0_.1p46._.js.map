@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/mahesh.dhulipalla/Desktop/Mahesh/vidyavikasLMS/app/layout.js"],"sourcesContent":["export const metadata={title:'Vidya Vikas Academy',description:'Practical tech courses'};\nexport default function RootLayout({children}) {\n return <html lang=\"en\"><body style={{fontFamily:'Arial',margin:0,padding:0}}>{children}</body></html>\n}"],"names":["metadata","title","description","RootLayout","children","lang","style","fontFamily","margin","padding"],"mappings":";;;;;;;;AAAO,MAAMA,WAAS;IAACC,OAAM;IAAsBC,aAAY;AAAwB;AACxE,SAASC,WAAW,EAACC,QAAQ,EAAC;IAC5C,qBAAO,oRAAC;QAAKC,MAAK;kBAAK,cAAA,oRAAC;YAAKC,OAAO;gBAACC,YAAW;gBAAQC,QAAO;gBAAEC,SAAQ;YAAC;sBAAIL;;;;;;;;;;;AAC/E"}},
+    {"offset": {"line": 45, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/mahesh.dhulipalla/Desktop/Mahesh/vidyavikasLMS/node_modules/next/src/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = (\n  require('../../module.compiled') as typeof import('../../module.compiled')\n).vendored['react-rsc']!.ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":"AAAAA,OAAOC,OAAO,GACZC,QAAQ,yJACRC,QAAQ,CAAC,YAAY,CAAEC,kBAAkB","ignoreList":[0]}}]
+}

@@ -1,0 +1,1 @@
+export default function Courses(){return <main style={{padding:40}}><h1>Courses</h1><ul><li>ReactJS Course – ₹999</li><li>Node.js Course – ₹1499</li></ul></main>}

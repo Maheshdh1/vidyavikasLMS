@@ -1,0 +1,1 @@
+export default function Page(){return <main style={{padding:40}}><h1>Refund Policy</h1><p>Refund requests will be reviewed according to course policy.</p></main>}

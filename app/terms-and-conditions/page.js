@@ -1,0 +1,1 @@
+export default function Page(){return <main style={{padding:40}}><h1>Terms & Conditions</h1><p>Course access is granted after successful payment verification.</p></main>}

@@ -1,0 +1,1 @@
+export default function Page(){return <main style={{padding:40}}><h1>Privacy Policy</h1><p>We collect only information necessary to provide courses and support.</p></main>}

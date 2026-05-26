@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/mahesh.dhulipalla/Desktop/Mahesh/vidyavikasLMS/app/payment-test/page.js"],"sourcesContent":["'use client';\nexport default function Page(){\n const click=()=>alert('Cashfree integration placeholder. Add sandbox integration after onboarding.');\n return <main style={{padding:40}}><h1>Payment Test</h1><button onClick={click}>Pay ₹100 (Demo)</button></main>\n}"],"names":["Page","click","alert","style","padding","onClick"],"mappings":";;;;;AAAA;;AACe,SAASA;IACvB,MAAMC,QAAM,IAAIC,MAAM;IACtB,qBAAO,oRAAC;QAAKC,OAAO;YAACC,SAAQ;QAAE;;0BAAG,oRAAC;0BAAG;;;;;;0BAAiB,oRAAC;gBAAOC,SAASJ;0BAAO;;;;;;;;;;;;AAChF"}},
+    {"offset": {"line": 44, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/mahesh.dhulipalla/Desktop/Mahesh/vidyavikasLMS/node_modules/next/src/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = (\n  require('../../module.compiled') as typeof import('../../module.compiled')\n).vendored['react-ssr']!.ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":"AAAAA,OAAOC,OAAO,GACZC,QAAQ,yJACRC,QAAQ,CAAC,YAAY,CAAEC,kBAAkB","ignoreList":[0]}}]
+}
