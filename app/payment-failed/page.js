@@ -1,16 +1,21 @@
 "use client";
 
-import { useSearchParams }
-from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function
-PaymentFailed() {
+export default function PaymentFailed() {
+  const [orderId, setOrderId] =
+    useState(null);
 
-  const searchParams =
-    useSearchParams();
+  useEffect(() => {
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
 
-  const orderId =
-    searchParams.get("order_id");
+    setOrderId(
+      params.get("order_id")
+    );
+  }, []);
 
   return (
     <div
@@ -32,8 +37,13 @@ PaymentFailed() {
       </h1>
 
       <p>
-        Your payment could
-        not be completed.
+        Payment was not
+        completed.
+      </p>
+
+      <p>
+        No amount has been
+        charged.
       </p>
 
       {orderId && (
@@ -48,8 +58,8 @@ PaymentFailed() {
 
       <button
         onClick={() =>
-          window.location.href =
-            "/payment-test"
+          (window.location.href =
+            "/payment-test")
         }
         style={{
           padding:

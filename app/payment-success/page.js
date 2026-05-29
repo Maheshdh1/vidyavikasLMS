@@ -4,11 +4,19 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function PaymentSuccess() {
-  const searchParams =
-    useSearchParams();
+const [orderId, setOrderId] =
+  useState(null);
 
-  const orderId =
-    searchParams.get("order_id");
+  useEffect(() => {
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+    
+    setOrderId(
+      params.get("order_id")
+    );
+  }, []);
 
   const [status, setStatus] =
     useState("loading");
