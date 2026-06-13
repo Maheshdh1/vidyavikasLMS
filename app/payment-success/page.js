@@ -1,75 +1,66 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 
 export default function PaymentSuccess() {
-const [orderId, setOrderId] =
-  useState(null);
+  const [orderId, setOrderId] = useState(null);
+  const [status, setStatus] = useState("loading");
+  const [paymentData, setPaymentData] = useState(null);
 
   useEffect(() => {
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-    
-    setOrderId(
-      params.get("order_id")
+    const params = new URLSearchParams(
+      window.location.search
     );
-  }, []);
 
-  const [status, setStatus] =
-    useState("loading");
+    const currentOrderId =
+      params.get("order_id");
 
-  const [paymentData,
-    setPaymentData] =
-    useState(null);
+    setOrderId(currentOrderId);
 
-  useEffect(() => {
-    const verifyPayment =
-      async () => {
-        try {
-          const res =
-            await fetch(
-              `/api/verify-payment?order_id=${orderId}`
-            );
+    const verifyPayment = async () => {
+      try {
+        const res = await fetch(
+          `/api/verify-payment?order_id=${currentOrderId}`
+        );
 
-          const data =
-            await res.json();
+        const data = await res.json();
 
-          if (
-            data.order_status ===
-            "PAID"
-          ) {
-            setStatus(
-              "success"
-            );
+        console.log(
+          "VERIFY RESPONSE:",
+          data
+        );
 
-            setPaymentData(
-              data
-            );
-          } else {
-            window.location.href =
-              `/payment-failed?order_id=${orderId}`;
-          }
-        } catch (error) {
-          console.error(error);
-
+        if (
+          data.order_status ===
+          "PAID"
+        ) {
+          setPaymentData(data);
+          setStatus("success");
+        } else {
           window.location.href =
-            `/payment-failed?order_id=${orderId}`;
+            `/payment-failed?order_id=${currentOrderId}`;
         }
-      };
+      } catch (error) {
+        console.error(
+          "VERIFY ERROR:",
+          error
+        );
 
-    if (orderId) {
+        window.location.href =
+          `/payment-failed?order_id=${currentOrderId}`;
+      }
+    };
+
+    if (currentOrderId) {
       verifyPayment();
     }
-  }, [orderId]);
+  }, []);
 
   if (status === "loading") {
     return (
       <div
         style={{
-          height: "100vh",
+          minHeight: "100vh",
           display: "flex",
           justifyContent:
             "center",
@@ -85,8 +76,16 @@ const [orderId, setOrderId] =
   return (
     <div
       style={{
-        textAlign: "center",
-        marginTop: "100px",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent:
+          "center",
+        alignItems:
+          "center",
+        flexDirection:
+          "column",
+        fontFamily:
+          "Arial",
       }}
     >
       <h1>
@@ -94,23 +93,31 @@ const [orderId, setOrderId] =
       </h1>
 
       <p>
-        Order ID:
+        Thank you for your payment.
       </p>
 
-      <strong>
-        {paymentData.order_id}
-      </strong>
+      <p>
+        Order ID:
+        {" "}
+        <strong>
+          {paymentData?.order_id}
+        </strong>
+      </p>
 
-      <p
-        style={{
-          marginTop: 20,
-        }}
-      >
+      <p>
         Status:
         {" "}
-        {
-          paymentData.order_status
-        }
+        <strong>
+          {paymentData?.order_status}
+        </strong>
+      </p>
+
+      <p>
+        Amount:
+        {" "}
+        <strong>
+          ₹{paymentData?.order_amount}
+        </strong>
       </p>
     </div>
   );

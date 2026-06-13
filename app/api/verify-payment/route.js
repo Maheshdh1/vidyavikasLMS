@@ -1,5 +1,7 @@
 import { Cashfree, CFEnvironment } from "cashfree-pg";
 import { NextResponse } from "next/server";
+import { supabaseAdmin }
+from "@/lib/supabase-admin";
 
 const cashfree = new Cashfree(
   CFEnvironment.SANDBOX,
@@ -21,10 +23,52 @@ export async function GET(request) {
       );
     }
 
-    const response =
-      await cashfree.PGFetchOrder(
-        orderId
-      );
+      const response =
+        await cashfree.PGFetchOrder(
+          orderId
+        );
+      
+        const order =
+    response.data;
+        
+    if (
+      order.order_status ===
+      "PAID"
+    ) {
+      await supabaseAdmin
+        .from("payments")
+        .upsert(
+          [{
+            order_id:
+              order.order_id,
+          
+            cf_order_id:
+              order.cf_order_id,
+          
+            customer_name:
+              order.customer_details
+                ?.customer_name,
+          
+            customer_email:
+              order.customer_details
+                ?.customer_email,
+          
+            customer_phone:
+              order.customer_details
+                ?.customer_phone,
+          
+            amount:
+              order.order_amount,
+          
+            payment_status:
+              order.order_status,
+          }],
+          {
+            onConflict:
+              "order_id",
+          }
+        );
+    }
 
     return NextResponse.json(
       response.data
