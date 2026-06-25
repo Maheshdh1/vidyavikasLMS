@@ -15,6 +15,7 @@ export default async function ProgramsPage() {
       <div className="program-grid">
         {programs.map((program) => (
           <ProgramCard
+            id={program.id}
             key={program.id}
             title={program.title}
             description={program.description}

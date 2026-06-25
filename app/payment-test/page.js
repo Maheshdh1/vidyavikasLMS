@@ -1,12 +1,41 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+import { useAuth } from "../../contexts/AuthContext";
+
 export default function PaymentTest() {
+  const searchParams = useSearchParams();
+  const { user } = useAuth();
+
+  const programId =
+    searchParams.get("programId");
+
   const handlePayment = async () => {
+    if (!user) {
+      alert("Please login first");
+      return;
+    }
+
     try {
       const res = await fetch(
         "/api/create-order",
         {
           method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+
+          body: JSON.stringify({
+            programId,
+
+            customerEmail:
+              user.email,
+
+            customerName:
+              user.email.split("@")[0],
+          }),
         }
       );
 
@@ -18,25 +47,15 @@ export default function PaymentTest() {
           mode: "sandbox",
         });
 
-      const result =
-        await cashfree.checkout({
-          paymentSessionId:
-            data.payment_session_id,
+      await cashfree.checkout({
+        paymentSessionId:
+          data.payment_session_id,
 
-          redirectTarget:
-            "_self",
-        });
-
-      console.log(
-        "CHECKOUT RESULT:",
-        result
-      );
-
+        redirectTarget:
+          "_self",
+      });
     } catch (error) {
-      console.error(
-        "CHECKOUT ERROR:",
-        error
-      );
+      console.error(error);
 
       window.location.href =
         "/payment-failed";
@@ -52,20 +71,27 @@ export default function PaymentTest() {
         alignItems:
           "center",
         height: "100vh",
+        flexDirection:
+          "column",
+        gap: "20px",
       }}
     >
+      <h2>
+        Program ID:
+        {" "}
+        {programId}
+      </h2>
+
+      <p>
+        Logged in as:
+        {" "}
+        {user?.email}
+      </p>
+
       <button
         onClick={handlePayment}
-        style={{
-          padding:
-            "12px 24px",
-          fontSize:
-            "18px",
-          cursor:
-            "pointer",
-        }}
       >
-        Pay ₹100
+        Proceed to Payment
       </button>
     </div>
   );
