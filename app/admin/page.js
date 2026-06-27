@@ -59,6 +59,12 @@ export default function AdminPage() {
         >
           Tutor Dashboard
         </Link>
+        <Link
+          href="/admin-enrollments"
+          className="hero-btn"
+        >
+          View Enrollments
+        </Link>
       </div>
     </div>
   );
