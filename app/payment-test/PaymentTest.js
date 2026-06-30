@@ -1,48 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAuth } from "../../contexts/AuthContext";
-import { supabase } from "../../lib/supabase";
 
 export default function PaymentTest() {
   const searchParams = useSearchParams();
 
-  const { user } = useAuth();
-
-  const [profile, setProfile] =
-    useState(null);
-
-  const [loading, setLoading] =
-    useState(true);
+  const {
+    user,
+    profile,
+    loading,
+  } = useAuth();
 
   const programId =
     searchParams.get("programId");
-
-  useEffect(() => {
-    if (user) {
-      loadProfile();
-    } else {
-      setLoading(false);
-    }
-  }, [user]);
-
-  async function loadProfile() {
-    const { data, error } =
-      await supabase
-        .from("users")
-        .select("*")
-        .eq("email", user.email)
-        .single();
-
-    if (error) {
-      console.error(error);
-    } else {
-      setProfile(data);
-    }
-
-    setLoading(false);
-  }
 
   const handlePayment = async () => {
     if (!user) {
@@ -70,7 +41,7 @@ export default function PaymentTest() {
             programId,
 
             customerEmail:
-              profile.email,
+              user.email,
 
             customerName:
               profile.full_name,
@@ -192,7 +163,7 @@ export default function PaymentTest() {
           <strong>
             Email:
           </strong>{" "}
-          {profile?.email}
+          {user?.email}
         </p>
 
         <button
@@ -221,8 +192,7 @@ export default function PaymentTest() {
               "pointer",
           }}
         >
-          Proceed to
-          Payment
+          Proceed to Payment
         </button>
       </div>
     </div>
