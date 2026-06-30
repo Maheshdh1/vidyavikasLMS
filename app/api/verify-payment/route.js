@@ -4,7 +4,7 @@ import { supabaseAdmin }
 from "@/lib/supabase-admin";
 
 const cashfree = new Cashfree(
-  CFEnvironment.SANDBOX,
+  CFEnvironment.PRODUCTION,
   process.env.CASHFREE_CLIENT_ID,
   process.env.CASHFREE_CLIENT_SECRET
 );
