@@ -26,6 +26,8 @@ const { error } =
 
       class_time:
         body.class_time,
+
+      is_global:true,
     });
 
 if (error) {
